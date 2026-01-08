@@ -20,9 +20,8 @@ html {
     
 }
 
-/* ========================= */
-     /* Navbar Modern */
-/* ========================= */
+/* ============================= */
+/* Navbar Base */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -71,7 +70,7 @@ html {
     transition: all 0.3s ease;
 }
 
-/* Links */
+/* Nav Links */
 .nav-links {
     display: flex;
     gap: 22px;
@@ -86,10 +85,6 @@ html {
     position: relative;
     padding: 6px 8px;
     transition: all 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: #fff;
 }
 
 .nav-links a::after {
@@ -109,7 +104,7 @@ html {
     width: 100%;
 }
 
-/* زر التسجيل مميز */
+/* زر التسجيل */
 .btn-register {
     background: #cb03b0;
     color: var(--purple);
@@ -125,7 +120,7 @@ html {
     transform: scale(1.05);
 }
 
-/* ========================= */
+/* ============================= */
 /* Responsive */
 @media (max-width: 768px) {
     .hamburger {
@@ -137,14 +132,15 @@ html {
         top: 0;
         right: -100%;
         height: 100%;
-        width: 250px;
+        width: 80%;
+        max-width: 300px;
         background: linear-gradient(180deg, var(--purple), var(--pink));
         flex-direction: column;
         padding: 80px 20px;
         gap: 25px;
         transition: right 0.3s ease;
         box-shadow: -2px 0 10px rgba(0,0,0,0.3);
-        z-index: 1000;
+        z-index: 1200;
     }
 
     .nav-links.active {
@@ -159,8 +155,28 @@ html {
     .btn-register {
         width: 100%;
         text-align: center;
+        padding: 10px 0;
+    }
+
+    /* Shrink logos on small screens */
+    .navbar-logos img {
+        height: 40px;
     }
 }
+
+/* Hamburger animation when active */
+.nav-links.active + .hamburger span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-links.active + .hamburger span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-links.active + .hamburger span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
 
 /* ========================= */
 /* Hero Section */
@@ -307,6 +323,9 @@ html {
 
 
 
+/* ========================= */
+/* About Competition Section */
+/* ========================= */
 .about-competition {
     background-color: #f9f9f9;
     padding: 60px 20px;
@@ -318,25 +337,25 @@ html {
     color: var(--purple);
     margin-bottom: 20px;
     font-weight: 700;
-    text-align: center;
 }
 
 .about-competition p {
     font-size: 17px;
     color: #444;
     margin-bottom: 25px;
-    max-width: 750px;
+    max-width: 700px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    line-height: 1.6;
 }
 
 .about-competition ul {
     list-style-type: disc;
-    padding-left: 0;
+    padding-left: 20px;
     display: inline-block;
-    text-align: right;
-    text-align: center;
+    text-align: left; /* القوائم تظهر بشكل طبيعي */
+    margin: 0 auto 25px auto; /* توسيط القائمة */
 }
 
 .about-competition li {
@@ -345,9 +364,9 @@ html {
     color: #555;
 }
 
-
-
-
+/* ========================= */
+/* Why Participate Section */
+/* ========================= */
 .why-participate {
     background-color: #f9f9f9;
     padding: 60px 20px;
@@ -366,21 +385,27 @@ html {
     justify-content: center;
     gap: 30px;
     flex-wrap: wrap;
+    align-items: stretch;
 }
 
 .card {
     background: white;
-    padding: 60px 20px;
+    padding: 40px 20px; /* أقل padding للموبايل */
     border-radius: 12px;
-    width: 280px;
+    width: 100%;
+    max-width: 280px; /* حجم ثابت للكروت الكبيرة */
     box-shadow: 0 8px 20px rgba(0,0,0,0.08);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .card h3 {
     color: var(--pink);
     margin-bottom: 12px;
     font-weight: 600;
+    font-size: 20px;
 }
 
 .card p {
@@ -394,18 +419,56 @@ html {
     box-shadow: 0 12px 24px rgba(0,0,0,0.12);
 }
 
-/* Responsive */
+/* ========================= */
+/* Responsive Design */
+/* ========================= */
 @media (max-width: 768px) {
-    .cards {
-        flex-direction: column;
-        gap: 20px;
-    }
-
+    .about-competition h2,
     .why-participate h2 {
         font-size: 26px;
     }
+
+    .about-competition p {
+        font-size: 16px;
+    }
+
+    .cards {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center; /* توسيط الكروت */
+    }
+
+    .card {
+        padding: 30px 15px;
+    }
 }
 
+@media (max-width: 480px) {
+    .about-competition h2,
+    .why-participate h2 {
+        font-size: 22px;
+    }
+
+    .about-competition p {
+        font-size: 15px;
+    }
+
+    .about-competition ul li {
+        font-size: 14px;
+    }
+
+    .card {
+        padding: 20px 15px;
+    }
+
+    .card h3 {
+        font-size: 18px;
+    }
+
+    .card p {
+        font-size: 14px;
+    }
+}
 
 
 .team {
@@ -718,3 +781,4 @@ html {
         max-width: 100%;
     }
 }
+
