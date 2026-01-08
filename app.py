@@ -61,12 +61,16 @@ class AdminLoginForm(FlaskForm):
 def index():
     form = RegistrationForm()
     if form.validate_on_submit():
-        reg = Registration(**form.data)
+        data = form.data.copy()      # عمل نسخة من بيانات الفورم
+        data.pop('submit', None)     # إزالة زر الإرسال
+        data.pop('csrf_token', None) # إزالة token CSRF إذا موجود
+        reg = Registration(**data)   # إنشاء الكائن بدون الحقول الزائدة
         db.session.add(reg)
         db.session.commit()
         flash('تم إرسال التسجيل بنجاح!', 'success')
         return redirect(url_for('index'))
     return render_template('index.html', form=form)
+
 
 @app.route('/admin/login', methods=['GET', 'POST'])
 def admin_login():
@@ -93,3 +97,4 @@ def admin_logout():
 
 with app.app_context():
     db.create_all()
+
