@@ -1,0 +1,720 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cairo', sans-serif;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+
+:root {
+    --purple: #6A1B9A;
+    --pink: #E91E63;
+    --blue: #7ebff3;
+    
+}
+
+/* ========================= */
+     /* Navbar Modern */
+/* ========================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 40px;
+    background: linear-gradient(90deg, var(--purple), var(--pink), var(--blue));
+    position: relative;
+    z-index: 1000;
+}
+
+/* Logos */
+.navbar-logos {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.navbar-logos img {
+    height: 55px;
+    transition: transform 0.3s ease;
+}
+
+.navbar-logos img:hover {
+    transform: scale(1.05);
+}
+
+/* Hamburger */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+.hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Links */
+.nav-links {
+    display: flex;
+    gap: 22px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    position: relative;
+    padding: 6px 8px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #fff;
+}
+
+.nav-links a::after {
+    content: '';
+    display: block;
+    height: 3px;
+    background: white;
+    width: 0;
+    transition: width 0.3s;
+    border-radius: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* زر التسجيل مميز */
+.btn-register {
+    background: #cb03b0;
+    color: var(--purple);
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.btn-register:hover {
+    background: linear-gradient(90deg, var(--purple), var(--pink), var(--blue));
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* ========================= */
+/* Responsive */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100%;
+        width: 250px;
+        background: linear-gradient(180deg, var(--purple), var(--pink));
+        flex-direction: column;
+        padding: 80px 20px;
+        gap: 25px;
+        transition: right 0.3s ease;
+        box-shadow: -2px 0 10px rgba(0,0,0,0.3);
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links a {
+        font-size: 18px;
+        color: white;
+    }
+
+    .btn-register {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* ========================= */
+/* Hero Section */
+/* ========================= */
+
+.hero {
+    width: 100%;
+    min-height: calc(100vh - 80px); /* كامل ارتفاع الشاشة ناقص Navbar */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(
+        135deg,
+        rgba(106, 27, 154, 0.07),
+        rgba(233, 30, 99, 0.07),
+        rgba(33, 150, 243, 0.07)
+    );
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+
+.hero h1 {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--purple);
+    line-height: 1.4;
+}
+
+.hero p {
+    max-width: 600px;
+    font-size: 18px;
+    color: #444;
+    margin-bottom: 30px;
+}
+
+/* Button */
+.hero-btn {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--purple), var(--pink), var(--blue));
+    color: white;
+    padding: 14px 36px;
+    border-radius: 50px; /* يجعل الزر أكثر نعومة وعصرية */
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* ظل خفيف يعطي عمق */
+    transition: all 0.3s ease; /* تحريك ناعم عند الهفر والضغط */
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.15); /* تأثير لمعان */
+    transition: all 0.4s ease;
+}
+
+.hero-btn:hover::after {
+    left: 0;
+}
+
+.hero-btn:hover {
+    transform: scale(1.08); /* تكبير بسيط */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* ظل أقوى */
+}
+
+.hero-btn:active {
+    transform: scale(0.98); /* تأثير ضغط لطيف */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ========================= */
+/* Hero Responsive */
+/* ========================= */
+@media (max-width: 768px) {
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+}
+
+.sponsors {
+    padding: 50px 20px;
+    text-align: center;
+    background: linear-gradient(
+        135deg,
+        rgba(106, 27, 154, 0.07),
+        rgba(233, 30, 99, 0.07),
+        rgba(33, 150, 243, 0.07)
+    );
+}
+
+.sponsors h2 {
+    font-size: 28px;
+    color: var(--purple);
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.sponsor-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.sponsor-logos img {
+    height: 120px;
+    transition: transform 0.2s ease;
+}
+
+.sponsor-logos img:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .sponsor-logos img {
+        height: 45px;
+    }
+
+    .sponsors h2 {
+        font-size: 24px;
+    }
+}
+
+
+
+.about-competition {
+    background-color: #f9f9f9;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.about-competition h2 {
+    font-size: 32px;
+    color: var(--purple);
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.about-competition p {
+    font-size: 17px;
+    color: #444;
+    margin-bottom: 25px;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.about-competition ul {
+    list-style-type: disc;
+    padding-left: 0;
+    display: inline-block;
+    text-align: right;
+    text-align: center;
+}
+
+.about-competition li {
+    margin-bottom: 12px;
+    font-size: 16px;
+    color: #555;
+}
+
+
+
+
+.why-participate {
+    background-color: #f9f9f9;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.why-participate h2 {
+    font-size: 32px;
+    color: var(--purple);
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+    padding: 60px 20px;
+    border-radius: 12px;
+    width: 280px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card h3 {
+    color: var(--pink);
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.card p {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.5;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .cards {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .why-participate h2 {
+        font-size: 26px;
+    }
+}
+
+
+
+.team {
+    padding: 60px 20px;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.team h2 {
+    font-size: 32px;
+    color: var(--purple);
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+/* الشبكة 3x2 */
+.team-members {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 أعمدة على الكمبيوتر */
+    gap: 30px;
+    justify-items: center;
+    align-items: start;
+}
+
+/* البطاقة */
+.member {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 15px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* يتكيف مع عمود الشبكة */
+}
+
+.member img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.member h3 {
+    color: var(--pink);
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.member p {
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.member-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.member:hover .member-buttons {
+    opacity: 1;
+}
+
+.btn-contact, .btn-more {
+    padding: 8px 16px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: transform 0.2s ease;
+}
+
+.btn-contact {
+    background-color: var(--blue);
+    color: #fff;
+}
+
+.btn-more {
+    background-color: var(--pink);
+    color: #fff;
+}
+
+.btn-contact:hover, .btn-more:hover {
+    transform: scale(1.05);
+}
+
+.member:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+}
+
+/* Responsive للموبايل */
+@media (max-width: 768px) {
+    .team-members {
+        display: grid;
+        grid-template-columns: 1fr; /* عمود واحد لكل بطاقة */
+        gap: 25px;
+    }
+
+    .team h2 {
+        font-size: 26px;
+    }
+
+    .member {
+        width: 90%;
+    }
+}
+
+
+
+
+
+/* Registration Form */
+.registration {
+    padding: 50px 20px;
+    background: linear-gradient(
+        135deg,
+        rgba(106, 27, 154, 0.07),
+        rgba(233, 30, 99, 0.07),
+        rgba(33, 150, 243, 0.07)
+    );
+    text-align: center;
+}
+
+.registration h2 {
+    font-size: 36px;
+    color: var(--purple);
+    margin-bottom: 15px;
+}
+
+.registration p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* شبكة الفورم */
+.registration form {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* صف الأعضاء */
+.member-row {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.member-row .form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.registration form label {
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+}
+
+.registration form input,
+.registration form textarea {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+/* حقل السبب */
+.registration form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* زر الإرسال */
+.registration form button {
+    padding: 14px 30px;
+    font-size: 18px;
+    background: linear-gradient(90deg, var(--purple), var(--pink), var(--blue));
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    margin-top: 10px;
+}
+
+.registration form button:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .member-row {
+        flex-direction: column;
+    }
+}
+
+.messages {
+    margin-bottom: 20px;
+}
+
+.message {
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+
+
+
+/* Footer */
+.site-footer {
+    background: linear-gradient(90deg, var(--purple), var(--pink), var(--blue));
+    color: #fff;
+    padding: 40px 20px 20px 20px;
+    font-family: 'Cairo', sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-about h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.footer-about p {
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 300px;
+}
+
+.footer-links h4,
+.footer-contact h4 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 8px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ffeb3b; /* تأثير الهفر */
+}
+
+.footer-contact p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 25px;
+    }
+
+    .footer-about p,
+    .footer-links ul,
+    .footer-contact p {
+        max-width: 100%;
+    }
+}

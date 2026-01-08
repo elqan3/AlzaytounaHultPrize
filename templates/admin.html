@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>لوحة الادمن - Hult Prize</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+            font-size: 14px;
+        }
+        th {
+            background-color: #6a0dad;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #ececec;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>لوحة الادمن - تسجيلات Hult Prize</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>اسم الفريق</th>
+                    <th>العضو الأول</th>
+                    <th>كلية الأول</th>
+                    <th>العضو الثاني</th>
+                    <th>كلية الثاني</th>
+                    <th>العضو الثالث</th>
+                    <th>كلية الثالث</th>
+                    <th>العضو الرابع</th>
+                    <th>كلية الرابع</th>
+                    <th>رقم الهاتف</th>
+                    <th>البريد الإلكتروني</th>
+                    <th>سبب المشاركة</th>
+                </tr>
+            </thead>
+           <tbody>
+    {% if registrations %}
+        {% for reg in registrations %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ reg.team_name }}</td>
+            <td>{{ reg.leader_name }}</td>
+            <td>{{ reg.leader_college }}</td>
+            <td>{{ reg.member2_name }}</td>
+            <td>{{ reg.member2_college }}</td>
+            <td>{{ reg.member3_name }}</td>
+            <td>{{ reg.member3_college }}</td>
+            <td>{{ reg.member4_name }}</td>
+            <td>{{ reg.member4_college }}</td>
+            <td>{{ reg.phone }}</td>
+            <td>{{ reg.email }}</td>
+            <td>
+                {{ reg.reason[:100] }}{% if reg.reason|length > 100 %}...{% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    {% else %}
+        <tr>
+            <td colspan="13" style="text-align:center;">
+                لا توجد تسجيلات حتى الآن
+            </td>
+        </tr>
+    {% endif %}
+</tbody>
+
+        </table>
+    </div>
+</body>
+</html>

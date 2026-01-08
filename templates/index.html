@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Hult Prize – جامعة الزيتونة ترهونة</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="navbar-left">
+        <div class="navbar-logos">
+            <img src="{{ url_for('static', filename='images/logo1.png') }}" alt="Logo 1">
+            <img src="{{ url_for('static', filename='images/logo2.png') }}" alt="Logo 2">
+        </div>
+        <button class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <div class="nav-links" id="navLinks">
+        <a href="#hero">الرئيسية</a>
+        <a href="#about">عن المسابقة</a>
+        <a href="#registration" class="btn-register">التسجيل</a>
+        <a href="#sponsors">الرعاة</a>
+        <a href="#team">المنظمين</a>
+        <a href="#footer">تواصل معنا</a>
+    </div>
+</nav>
+
+<!-- Flash Messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="messages">
+            {% for category, message in messages %}
+                <div class="message {{ category }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<!-- Hero -->
+<section class="hero" id="hero">
+    <h1>Hult Prize<br>جامعة الزيتونة – ترهونة</h1>
+    <p>أكبر مسابقة ريادة أعمال طلابية في العالم، نصنع فيها أفكارًا مبتكرة ذات أثر حقيقي على المجتمع.</p>
+    <a href="#registration" class="hero-btn">سجّل الآن</a>
+</section>
+
+<!-- About -->
+<section id="about">
+    <h2>عن المسابقة</h2>
+    <p>Hult Prize هي أكبر مسابقة طلابية لريادة الأعمال في العالم، تهدف إلى إيجاد حلول مبتكرة لمشاكل اجتماعية واقتصادية.</p>
+    <ul>
+        <li>فرصة لتعلم مهارات ريادة الأعمال.</li>
+        <li>شبكة علاقات واسعة مع طلاب ومرشدين عالميين.</li>
+        <li>تأثير اجتماعي واقتصادي حقيقي.</li>
+    </ul>
+</section>
+
+<!-- Why Participate -->
+<section id="why-participate">
+    <h2>لماذا المشاركة في Hult Prize؟</h2>
+    <div class="cards" style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap;">
+        <div class="card" style="padding:20px; border:1px solid #ccc; border-radius:10px; width:250px;">
+            <h3>فرصة للتعلم</h3>
+            <p>اكتسب مهارات ريادة الأعمال، القيادة، والتفكير الإبداعي في بيئة تنافسية.</p>
+        </div>
+        <div class="card" style="padding:20px; border:1px solid #ccc; border-radius:10px; width:250px;">
+            <h3>شبكة علاقات واسعة</h3>
+            <p>تواصل مع طلاب، مرشدين، ورعاة من جميع أنحاء العالم.</p>
+        </div>
+        <div class="card" style="padding:20px; border:1px solid #ccc; border-radius:10px; width:250px;">
+            <h3>تأثير حقيقي</h3>
+            <p>ساهم في حلول مبتكرة لمشاكل اجتماعية واقتصادية حقيقية.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Sponsors -->
+<section class="sponsors" id="sponsors">
+    <h2>رعاة المسابقة</h2>
+    <div class="sponsor-logos">
+        <img src="{{ url_for('static', filename='images/sponsor1.png') }}" alt="Sponsor 1">
+        <img src="{{ url_for('static', filename='images/sponsor2.png') }}" alt="Sponsor 2">
+        <img src="{{ url_for('static', filename='images/sponsor1.png') }}" alt="Sponsor 3">
+    </div>
+</section>
+
+<!-- Team -->
+<section class="team" id="team">
+    <h2>الفريق المسؤول</h2>
+    <div class="team-members">
+        <!-- مثال على عضو -->
+        <div class="member">
+            <img src="{{ url_for('static', filename='images/manager1.jpeg') }}" alt="Manager 1">
+            <h3>هارون ابراهيم</h3>
+            <p>منسق المسابقة</p>
+            <div class="member-buttons">
+                <a href="https://wa.me/218930550462">تواصل</a>
+                <a href="https://www.facebook.com/harwn.abwrzyzh">معرفة المزيد</a>
+            </div>
+        </div>
+         <div class="member">
+            <img src="{{ url_for('static', filename='images/manager2.jpeg') }}" alt="Manager 2">
+            <h3> عبدالعظيم القنطري</h3>
+            <p>المسؤل التقني</p>
+            <div class="member-buttons">
+                <a href="https://wa.me/218926410278" class="btn-contact">تواصل</a>
+                <a href="https://www.facebook.com/elqan3/" class="btn-more">معرفة المزيد</a>
+            </div>
+        </div>
+
+        <div class="member">
+            <img src="{{ url_for('static', filename='images/manager3.jpeg') }}" alt="Manager 3">
+            <h3>رياض موسى</h3>
+            <p>متابعة وتنظيم المسابقة</p>
+            <div class="member-buttons">
+                <a href="https://wa.me/218912728859" class="btn-contact">تواصل</a>
+                <a href="https://www.facebook.com/profile.php?id=100066095695341" class="btn-more">معرفة المزيد</a>
+            </div>
+        </div>
+
+        <div class="member">
+            <img src="{{ url_for('static', filename='images/manager4.jpeg') }}" alt="Manager 4">
+            <h3>محمد قريرا </h3>
+            <p>نائب منسق المسابقة</p>
+            <div class="member-buttons">
+                <a href="https://wa.me/218923405972" class="btn-contact">تواصل</a>
+                <a href="https://www.facebook.com/mhmd.qryrt.741491?comment_id=Y29tbWVudDoxMjIxNjk1NzQzMjg3NTUwNTZfODkxNzE2NDQwNDQwNTk1" class="btn-more">معرفة المزيد</a>
+            </div>
+        </div>
+
+        <div class="member">
+            <img src="{{ url_for('static', filename='images/manager5.jpeg') }}" alt="Manager 5">
+            <h3>مؤنس الضاوي </h3>
+            <p>أعلامي المسابقة</p>
+            <div class="member-buttons">
+                <a href="https://wa.me/218924904532" class="btn-contact">تواصل</a>
+                <a href="https://www.facebook.com/m.ains.aldawe?comment_id=Y29tbWVudDoxMjIxNjk1NzQzMjg3NTUwNTZfMTU3MzA4NTY1Njk0NDAyNA%3D%3D" class="btn-more">معرفة المزيد</a>
+            </div>
+        </div>
+
+        <div class="member">
+            <img src="{{ url_for('static', filename='images/manager6.jpeg') }}" alt="Manager 6">
+            <h3> محمود بشير</h3>
+            <p> مسؤول العلاقات</p>
+            <div class="member-buttons">
+                <a href="https://wa.me/218944316510" class="btn-contact">تواصل</a>
+                <a href="https://www.facebook.com/mahmoud.alyosfe10?comment_id=Y29tbWVudDoxMjIxNjk1NzQzMjg3NTUwNTZfNzQyNTIwNzg4NDA0OTgw" class="btn-more">معرفة المزيد</a>
+            </div>
+        </div>
+       
+    </div>
+</section>
+
+<!-- Registration -->
+<section class="registration" id="registration">
+    <h2>سجّل فريقك الآن</h2>
+    <form method="post">
+        {{ form.hidden_tag() }}
+
+        <div class="form-group">
+            <label>اسم الفريق</label>
+            {{ form.team_name() }}
+        </div>
+
+        <div class="member-row">
+            <div class="form-group">
+                <label>العضو الأول (القائد)</label>
+                {{ form.leader_name() }}
+            </div>
+            <div class="form-group">
+                <label>كلية العضو الأول</label>
+                {{ form.leader_college() }}
+            </div>
+            <div class="form-group">
+                <label>العضو الثاني</label>
+                {{ form.member2_name() }}
+            </div>
+            <div class="form-group">
+                <label>كلية العضو الثاني</label>
+                {{ form.member2_college() }}
+            </div>
+        </div>
+
+        <div class="member-row">
+            <div class="form-group">
+                <label>العضو الثالث</label>
+                {{ form.member3_name() }}
+            </div>
+            <div class="form-group">
+                <label>كلية العضو الثالث</label>
+                {{ form.member3_college() }}
+            </div>
+            <div class="form-group">
+                <label>العضو الرابع</label>
+                {{ form.member4_name() }}
+            </div>
+            <div class="form-group">
+                <label>كلية العضو الرابع</label>
+                {{ form.member4_college() }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>رقم الهاتف</label>
+            {{ form.phone() }}
+        </div>
+        <div class="form-group">
+            <label>البريد الإلكتروني</label>
+            {{ form.email() }}
+        </div>
+
+        <div class="form-group">
+            <label>لماذا تريد المشاركة؟</label>
+            {{ form.reason() }}
+        </div>
+
+        <button type="submit">تسجيل</button>
+    </form>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer" id="footer">
+    <p>© Hult Prize at Alzaytouna University - Tarhuna 2024. جميع الحقوق محفوظة. المسؤل التقني - عبدالعظيم القنطري</p>
+</footer>
+
+<script>
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+const links = navLinks.querySelectorAll('a');
+
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    hamburger.classList.toggle('open');
+});
+
+links.forEach(link => {
+    link.addEventListener('click', () => {
+        if (navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            hamburger.classList.remove('open');
+        }
+    });
+});
+</script>
+
+</body>
+</html>
