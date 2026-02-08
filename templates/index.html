@@ -226,6 +226,17 @@
         <button type="submit">تسجيل</button>
     </form>
 </section>
+<!-- Registration Success Modal -->
+<div id="successModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>تم تسجيل الفريق بنجاح!</h3>
+    <p>شكراً لتسجيلكم، فريقكم الآن مسجل في المسابقة.</p>
+    <a href="https://chat.whatsapp.com/EuK4EDxPXsvCYOVZuBpqWs?mode=gi_t" target="_blank">
+        <button class="btn">انضم إلى مجموعة المسابقة</button>
+    </a>
+  </div>
+</div>
 
 <!-- Footer -->
 <footer class="site-footer" id="footer">
@@ -251,8 +262,33 @@ links.forEach(link => {
     });
 });
 </script>
+<script>
+const modal = document.getElementById("successModal");
+const closeBtn = document.querySelector(".modal .close");
+
+// لإغلاق النافذة عند الضغط على X
+closeBtn.onclick = () => modal.style.display = "none";
+
+// لإغلاق النافذة عند الضغط خارجها
+window.onclick = (event) => {
+  if (event.target == modal) modal.style.display = "none";
+}
+
+// عرض النافذة بعد التسجيل (إذا تم flash message بنجاح)
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      {% if category == 'success' %}
+        modal.style.display = 'block';
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+</script>
+
 
 </body>
 </html>
+
 
 
